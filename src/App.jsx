@@ -9,6 +9,8 @@ import AnimePage from "./pages/AnimePage";
 import MoviesPage from "./pages/MoviesPage";
 import SeriesPage from "./pages/SeriesPage";
 import WatchListPage from "./pages/WatchListPage";
+import LoginPage from "./pages/LoginPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -22,6 +24,10 @@ function App() {
         <Route path="/movies" element={<MoviesPage />} />
         <Route path="/series" element={<SeriesPage />} />
         <Route path="/watch-list" element={<WatchListPage />} />
+
+        <Route path="/login" element={<LoginPage />} />
+
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </>
