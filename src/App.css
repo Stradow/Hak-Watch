@@ -1,3 +1,43 @@
+/* Color Pallete: 
+  background: #0f172a 
+  Surface / cards: #1e293b
+  Primary accent: #e50914 (cinematic red) or #22c55e (green)
+  Text primary: #f8fafc
+  Text secondary: #94a3b8
+*/
+
+.navbar {
+  background-color: blue;
+  min-height: 10vh;
+  font-size: 1.7rem;
+  color: #f8fafc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.sidebar ul {
+  background-color: lightgray;
+  font-size: 1.7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  list-style: none;
+  margin: 2px;
+}
+
+body {
+  background-color: #0f172a;
+  min-height: 75vh;
+}
+
+.footer {
+  background-color: blue;
+  min-height: 10vh;
+}
+
 button {
   display: flex;
   align-items: center;
