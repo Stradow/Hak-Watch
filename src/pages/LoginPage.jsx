@@ -1,24 +1,73 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+const API_URL = "http://localhost:4000";
 
 function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage("");
+    setSuccessMessage("");
 
-    const credentials = { username, password };
-    console.log("Login attempt:", credentials);
+    try {
+      const response = await axios.get(`${API_URL}/users`, {
+        params: { username, password },
+      });
+
+      const user = response.data && response.data[0];
+
+      if (!user) {
+        setErrorMessage("Invalid username or password.");
+        return;
+      }
+
+      if (user.role !== "USER") {
+        setErrorMessage("Access restricted to standard users only.");
+        return;
+      }
+
+      const loggedUser = {
+        id: user.id,
+        username: user.username,
+        role: user.role,
+      };
+
+      localStorage.setItem("hakwatch_user", JSON.stringify(loggedUser));
+
+      setSuccessMessage("Welcome to HAK");
+
+      setTimeout(() => {
+        navigate("/");
+      }, 800);
+    } catch (error) {
+      setErrorMessage(
+        "Server error. Make sure JSON Server is running on port 4000."
+      );
+    }
   };
 
   const handleClear = () => {
     setUsername("");
     setPassword("");
+    setErrorMessage("");
+    setSuccessMessage("");
   };
 
   return (
     <section>
-      <h1>Login</h1>
+      <h1 className="login-title">Login</h1>
+
+      {errorMessage && <p>{errorMessage}</p>}
+      {successMessage && <p>{successMessage}</p>}
+
       <form onSubmit={handleSubmit}>
         <label>
           Username
@@ -29,6 +78,7 @@ function LoginPage() {
             autoComplete="username"
           />
         </label>
+
         <label>
           Password
           <input
@@ -38,7 +88,8 @@ function LoginPage() {
             autoComplete="current-password"
           />
         </label>
-        <div>
+
+        <div className="form-btn">
           <button type="submit">Login</button>
           <button type="button" onClick={handleClear}>
             Clear
