@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Popup from "reactjs-popup";
 
 function HomePage() {
   return (
@@ -14,6 +15,24 @@ function HomePage() {
           <Link to="/watch-list">
             <button>Go to Watch List</button>
           </Link>
+
+          <div>
+            <h4>Popup - GeeksforGeeks</h4>
+            <Popup
+              trigger={<button> View Details </button>}
+              position="right center"
+            >
+              <div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+                assumenda, nulla reprehenderit eveniet possimus ducimus est eum
+                amet deserunt consequatur commodi ut vel ad doloremque ullam
+                nisi quo atque. Distinctio culpa pariatur ullam laborum
+                praesentium velit quis, quae ratione perspiciatis quos totam
+                possimus eum saepe dolore cupiditate temporibus cumque
+                laudantium.
+              </div>
+            </Popup>
+          </div>
 
           <article>
             <h3>Featured Movie</h3>
