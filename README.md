@@ -1,16 +1,33 @@
-# React + Vite
+# 🎬 Hak-Watch
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Hak-Watch** is a web application built with **Vite + React** that allows users to discover **movies, TV series, and anime**, organize them into personal lists, and explore similar content using a public media API.
 
-Currently, two official plugins are available:
+The name **Hak** comes from the first letters of the core developers:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **H**amza
+- **A**maury
+- **K**ostas
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Features (Planned & In Progress)
 
-## Expanding the ESLint configuration
+- 🔍 Search movies, TV series, and anime
+- 📄 View detailed information for each title
+- ⭐ Add items to **Favorites**
+- 📌 Add items to **Watchlist**
+- ✅ Mark items as **Watched**
+- 🔁 Discover similar movies/series/anime from the API
+- 📱 Responsive design
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React + Vite
+- **Routing:** React Router
+- **State Management:** React Context / hooks
+- **API:** Public movie/TV/anime API (TMBD)
+- **Tooling:** Git, GitHub
+
+---
