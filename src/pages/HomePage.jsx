@@ -1,9 +1,63 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Popup from "reactjs-popup";
+import axios from "axios";
+
+const API_URL = "http://localhost:4000";
+
+function getRandomItem(list) {
+  if (!list || list.length === 0) return null;
+  const index = Math.floor(Math.random() * list.length);
+  return list[index];
+}
 
 function HomePage() {
+  const [featuredMovie, setFeaturedMovie] = useState(null);
+  const [featuredSeries, setFeaturedSeries] = useState(null);
+  const [featuredAnime, setFeaturedAnime] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    const fetchFeaturedItems = async () => {
+      try {
+        setLoading(true);
+        setErrorMessage("");
+
+        const [moviesRes, seriesRes, animeRes] = await Promise.all([
+          axios.get(`${API_URL}/movies`),
+          axios.get(`${API_URL}/series`),
+          axios.get(`${API_URL}/anime`),
+        ]);
+
+        const eligibleMovies = (moviesRes.data || []).filter(
+          (movie) => Number(movie.rating) >= 8.5
+        );
+
+        const eligibleSeries = (seriesRes.data || []).filter(
+          (series) => Number(series.rating) >= 8.5
+        );
+
+        const eligibleAnime = (animeRes.data || []).filter(
+          (anime) => Number(anime.rating) >= 8.5
+        );
+
+        setFeaturedMovie(getRandomItem(eligibleMovies));
+        setFeaturedSeries(getRandomItem(eligibleSeries));
+        setFeaturedAnime(getRandomItem(eligibleAnime));
+      } catch (error) {
+        setErrorMessage(
+          "Server error. Make sure JSON Server is running on port 4000."
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchFeaturedItems();
+  }, []);
+
   return (
-    <section>
+    <section className="homepage-container">
       <header>
         <h1>HAK Watch</h1>
         <p>Your personal watchlist for movies, series and anime.</p>
@@ -11,65 +65,127 @@ function HomePage() {
 
       <main>
         <h2>Featured Today</h2>
-        <div>
-          <Link to="/watch-list">
-            <button>Go to Watch List</button>
-          </Link>
 
+        {loading && <p>Loading featured picks...</p>}
+        {errorMessage && <p>{errorMessage}</p>}
+
+        {!loading && !errorMessage && (
           <div>
-            <h4>Popup - GeeksforGeeks</h4>
-            <Popup
-              trigger={<button> View Details </button>}
-              position="right center"
-            >
-              <div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-                assumenda, nulla reprehenderit eveniet possimus ducimus est eum
-                amet deserunt consequatur commodi ut vel ad doloremque ullam
-                nisi quo atque. Distinctio culpa pariatur ullam laborum
-                praesentium velit quis, quae ratione perspiciatis quos totam
-                possimus eum saepe dolore cupiditate temporibus cumque
-                laudantium.
-              </div>
-            </Popup>
+            <article>
+              <h3>Featured Movie</h3>
+
+              {featuredMovie && (
+                <>
+                  <img
+                    src={featuredMovie.poster}
+                    alt={`${featuredMovie.title} poster`}
+                    className="featured-poster"
+                  />
+
+                  <div>
+                    <p>Title: {featuredMovie.title}</p>
+                    <p>Rating: {featuredMovie.rating}</p>
+                  </div>
+
+                  <Popup trigger={<button>View Details</button>} modal nested>
+                    {(close) => (
+                      <div className="popup-content">
+                        <button
+                          type="button"
+                          className="popup-close"
+                          onClick={close}
+                        >
+                          ✕
+                        </button>
+
+                        <p>
+                          {featuredMovie.description ||
+                            "No description available."}
+                        </p>
+                      </div>
+                    )}
+                  </Popup>
+                </>
+              )}
+            </article>
+
+            <article>
+              <h3>Featured Series</h3>
+
+              {featuredSeries && (
+                <>
+                  <img
+                    src={featuredSeries.poster}
+                    alt={`${featuredSeries.title} poster`}
+                    className="featured-poster"
+                  />
+
+                  <div>
+                    <p>Title: {featuredSeries.title}</p>
+                    <p>Rating: {featuredSeries.rating}</p>
+                  </div>
+
+                  <Popup trigger={<button>View Details</button>} modal nested>
+                    {(close) => (
+                      <div className="popup-content">
+                        <button
+                          type="button"
+                          className="popup-close"
+                          onClick={close}
+                        >
+                          ✕
+                        </button>
+
+                        <p>
+                          {featuredSeries.description ||
+                            "No description available."}
+                        </p>
+                      </div>
+                    )}
+                  </Popup>
+                </>
+              )}
+            </article>
+
+            <article>
+              <h3>Featured Anime</h3>
+
+              {featuredAnime && (
+                <>
+                  <img
+                    src={featuredAnime.poster}
+                    alt={`${featuredAnime.title} poster`}
+                    className="featured-poster"
+                  />
+
+                  <div>
+                    <p>Title: {featuredAnime.title}</p>
+                    <p>Rating: {featuredAnime.rating}</p>
+                  </div>
+
+                  <Popup trigger={<button>View Details</button>} modal nested>
+                    {(close) => (
+                      <div className="popup-content">
+                        <button
+                          type="button"
+                          className="popup-close"
+                          onClick={close}
+                        >
+                          ✕
+                        </button>
+
+                        <p>
+                          {featuredSeries.description ||
+                            "No description available."}
+                        </p>
+                      </div>
+                    )}
+                  </Popup>
+                </>
+              )}
+            </article>
           </div>
-
-          <article>
-            <h3>Featured Movie</h3>
-            <div>
-              <p>Title: —</p>
-              <p>Overview: —</p>
-            </div>
-            <button>View details</button>
-            <Link to="/movies">
-              <button>Browse Movies</button>
-            </Link>
-          </article>
-
-          <article>
-            <h3>Featured Series</h3>
-            <div>
-              <p>Title: —</p>
-              <p>Overview: —</p>
-            </div>
-            <button>View details</button>
-            <Link to="/series">
-              <button>Browse Series</button>
-            </Link>
-          </article>
-
-          <article>
-            <h3>Featured Anime</h3>
-            <div>
-              <p>Title: —</p>
-              <p>Overview: —</p>
-            </div>
-            <button>View details</button>
-            <Link to="/anime">
-              <button>Browse Anime</button>
-            </Link>
-          </article>
-        </div>
+        )}
       </main>
     </section>
   );
