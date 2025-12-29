@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 const API_URL = "http://localhost:4000";
 
-function LoginPage() {
+function RegisterPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
@@ -18,36 +18,42 @@ function LoginPage() {
     setErrorMessage("");
     setSuccessMessage("");
 
+    const trimmedUsername = username.trim();
+
+    if (!trimmedUsername || !password || !confirmPassword) {
+      setErrorMessage("Please fill in all fields.");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setErrorMessage("Passwords do not match.");
+      return;
+    }
+
     try {
-      const response = await axios.get(`${API_URL}/users`, {
-        params: { username, password },
+      const existingUserRes = await axios.get(`${API_URL}/users`, {
+        params: { username: trimmedUsername },
       });
 
-      const user = response.data && response.data[0];
-
-      if (!user) {
-        setErrorMessage("Invalid username or password.");
+      if (
+        Array.isArray(existingUserRes.data) &&
+        existingUserRes.data.length > 0
+      ) {
+        setErrorMessage("Username already exists.");
         return;
       }
 
-      if (user.role !== "USER") {
-        setErrorMessage("Access restricted to standard users only.");
-        return;
-      }
+      await axios.post(`${API_URL}/users`, {
+        username: trimmedUsername,
+        password,
+        role: "USER",
+      });
 
-      const loggedUser = {
-        id: user.id,
-        username: user.username,
-        role: user.role,
-      };
-
-      localStorage.setItem("hakwatch_user", JSON.stringify(loggedUser));
-
-      setSuccessMessage("Welcome to HAK");
+      setSuccessMessage("Account created! Redirecting to login...");
 
       setTimeout(() => {
-        navigate("/");
-      }, 800);
+        navigate("/login");
+      }, 900);
     } catch (error) {
       setErrorMessage(
         "Server error. Make sure JSON Server is running on port 4000."
@@ -58,13 +64,14 @@ function LoginPage() {
   const handleClear = () => {
     setUsername("");
     setPassword("");
+    setConfirmPassword("");
     setErrorMessage("");
     setSuccessMessage("");
   };
 
   return (
     <section>
-      <h1 className="login-title">Login</h1>
+      <h1 className="register-title">Register</h1>
 
       {errorMessage && <p>{errorMessage}</p>}
       {successMessage && <p>{successMessage}</p>}
@@ -86,27 +93,33 @@ function LoginPage() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            autoComplete="current-password"
+            autoComplete="new-password"
+          />
+        </label>
+
+        <label>
+          Confirm Password
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            autoComplete="new-password"
           />
         </label>
 
         <div className="form-btn">
-          <button type="submit">Login</button>
+          <button type="submit">Create account</button>
           <button type="button" onClick={handleClear}>
             Clear
           </button>
-          <p>
-            <em>
-              If you are not a Hakster yet{" "}
-              <strong>
-                <Link to="/register">CLICK HERE</Link>
-              </strong>
-            </em>
-          </p>
         </div>
       </form>
+
+      <p>
+        Already a Hakster? <Link to="/login">Login</Link>
+      </p>
     </section>
   );
 }
 
-export default LoginPage;
+export default RegisterPage;

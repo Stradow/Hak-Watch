@@ -11,6 +11,7 @@ import SeriesPage from "./pages/SeriesPage";
 import WatchListPage from "./pages/WatchListPage";
 import LoginPage from "./pages/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/watch-list" element={<WatchListPage />} />
 
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
