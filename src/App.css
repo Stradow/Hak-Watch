@@ -829,3 +829,202 @@ button:active {
     height: 300px;
   }
 }
+
+/* =========================
+   SERIES PAGE
+   ========================= */
+
+.seriespage-container {
+  min-height: calc(100vh - 18vh);
+  padding: 2.5rem;
+  background: #0b0f0d;
+  color: #9fe6c3;
+}
+
+.seriespage-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.seriespage-header h1 {
+  color: #00ff9c;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  text-shadow: 0 0 6px rgba(0, 255, 156, 0.6), 0 0 18px rgba(0, 255, 156, 0.3);
+}
+
+.seriespage-header p {
+  margin-top: 0.75rem;
+  opacity: 0.85;
+}
+
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Card */
+.series-card {
+  background: linear-gradient(180deg, #0e1411 0%, #0b0f0d 100%);
+  border: 1px solid rgba(0, 255, 156, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 14px rgba(0, 255, 156, 0.05);
+
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.series-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 22px rgba(0, 255, 156, 0.12);
+}
+
+.series-poster {
+  width: 100%;
+  height: 320px;
+  object-fit: contain;
+  background-color: #0b0f0d;
+  display: block;
+}
+
+.series-info {
+  padding: 1rem 1.1rem 1.2rem 1.1rem;
+}
+
+.series-title {
+  color: #00ff9c;
+  font-size: 1rem;
+  margin: 0 0 0.6rem 0;
+}
+
+.series-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* =========================
+   POPUP – SERIES DETAILS
+   ========================= */
+
+.series-popup {
+  background: linear-gradient(180deg, #0e1411 0%, #0b0f0d 100%);
+  color: #9fe6c3;
+
+  border: 1px solid rgba(0, 255, 156, 0.35);
+  border-radius: 12px;
+
+  width: 92%;
+  max-width: 860px;
+
+  box-shadow: 0 0 20px rgba(0, 255, 156, 0.25), 0 0 60px rgba(0, 255, 156, 0.15);
+
+  position: relative;
+  padding: 1.5rem;
+}
+
+.series-popup-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+
+  background: transparent;
+  border: none;
+  color: #00ff9c;
+
+  font-size: 1.2rem;
+  cursor: pointer;
+
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.series-popup-close:hover {
+  transform: scale(1.15);
+  opacity: 0.85;
+}
+
+.series-popup-body {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.series-popup-poster {
+  width: 100%;
+  height: 380px;
+  object-fit: contain;
+  background-color: #0b0f0d;
+
+  border-radius: 10px;
+  border: 1px solid rgba(0, 255, 156, 0.2);
+}
+
+.series-popup-title {
+  color: #00ff9c;
+  margin: 0 0 0.75rem 0;
+  text-shadow: 0 0 6px rgba(0, 255, 156, 0.6), 0 0 18px rgba(0, 255, 156, 0.25);
+}
+
+.series-popup-stats {
+  display: flex;
+  gap: 1.25rem;
+  margin: 0 0 1rem 0;
+  opacity: 0.9;
+}
+
+.series-popup-description {
+  margin: 0 0 1.25rem 0;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.series-popup-authmsg {
+  margin: 0;
+  opacity: 0.85;
+}
+
+.series-popup-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.series-popup-btn {
+  background: transparent;
+  border: 1px solid #00ff9c;
+  color: #00ff9c;
+
+  padding: 0.55rem 1.2rem;
+  border-radius: 6px;
+
+  font-size: 0.85rem;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.series-popup-btn:hover {
+  background: #00ff9c;
+  color: #0b0f0d;
+  box-shadow: 0 0 14px rgba(0, 255, 156, 0.6);
+}
+
+.series-popup-btn-like {
+  border-color: rgba(0, 255, 156, 0.6);
+}
+
+@media (max-width: 720px) {
+  .series-popup-body {
+    grid-template-columns: 1fr;
+  }
+
+  .series-popup-poster {
+    height: 300px;
+  }
+}
