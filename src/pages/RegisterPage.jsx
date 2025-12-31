@@ -71,7 +71,7 @@ function RegisterPage() {
 
   return (
     <section className="register">
-      <h1 className="register-title">Register</h1>
+      {/* <h1 className="register-title">Register</h1> */}
 
       {errorMessage && <p>{errorMessage}</p>}
       {successMessage && <p>{successMessage}</p>}
@@ -113,11 +113,10 @@ function RegisterPage() {
             Clear
           </button>
         </div>
+        <p>
+          Already a Hakster? <Link to="/login">Login</Link>
+        </p>
       </form>
-
-      <p>
-        Already a Hakster? <Link to="/login">Login</Link>
-      </p>
     </section>
   );
 }
