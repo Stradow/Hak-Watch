@@ -70,7 +70,7 @@ function RegisterPage() {
   };
 
   return (
-    <section>
+    <section className="register">
       <h1 className="register-title">Register</h1>
 
       {errorMessage && <p>{errorMessage}</p>}

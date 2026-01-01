@@ -1028,3 +1028,102 @@ button:active {
     height: 300px;
   }
 }
+
+/* =========================
+    LOGIN PAGE
+   ========================= */
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 10vh - 70px);
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 156, 0.08) 0%,
+    rgba(11, 15, 13, 1) 65%
+  );
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 3rem 2.5rem;
+
+  background: linear-gradient(180deg, #0e1411 0%, #0b0f0d 100%);
+  border: 1px solid rgba(0, 255, 156, 0.25);
+  border-radius: 14px;
+
+  box-shadow: 0 4px 20px rgba(0, 255, 156, 0.15),
+    inset 0 1px 0 rgba(0, 255, 156, 0.1);
+
+  min-width: 400px;
+  max-width: 500px;
+}
+
+.login form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+
+  font-size: 1rem;
+  font-weight: 500;
+  color: #00ff9c;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.login form input {
+  font-size: 1rem;
+  font-family: inherit;
+  padding: 0.75rem 1rem;
+
+  background-color: #0b0f0d;
+  color: #f8fafc;
+
+  border: 1px solid rgba(0, 255, 156, 0.2);
+  border-radius: 8px;
+
+  transition: all 0.25s ease;
+  outline: none;
+}
+
+.form-btn {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.form-btn button {
+  flex: 1;
+}
+
+.login p {
+  margin: 0;
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 1.6rem;
+  color: #94a3b8;
+  background: rgba(0, 255, 156, 0.05);
+  border-radius: 6px;
+}
+
+.login p strong a {
+  color: #00ff9c;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Error and Success messages */
+.login > p {
+  position: absolute;
+  top: calc(28vh + 1rem);
+
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1.8rem;
+  font-weight: 800;
+}

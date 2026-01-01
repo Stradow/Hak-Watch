@@ -63,8 +63,8 @@ function LoginPage() {
   };
 
   return (
-    <section>
-      <h1 className="login-title">Login</h1>
+    <section className="login">
+      {/* <h1 className="login-title">Login</h1> */}
 
       {errorMessage && <p>{errorMessage}</p>}
       {successMessage && <p>{successMessage}</p>}
@@ -95,15 +95,15 @@ function LoginPage() {
           <button type="button" onClick={handleClear}>
             Clear
           </button>
-          <p>
-            <em>
-              If you are not a Hakster yet{" "}
-              <strong>
-                <Link to="/register">CLICK HERE</Link>
-              </strong>
-            </em>
-          </p>
         </div>
+        <p>
+          <em>
+            If you are not a Hakster yet{" "}
+            <strong>
+              <Link to="/register">CLICK HERE</Link>
+            </strong>
+          </em>
+        </p>
       </form>
     </section>
   );
