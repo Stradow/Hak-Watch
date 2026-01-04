@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 function Navbar() {
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("hakwatch_user") || "null");
+  const homePath = user?.role === "ADMIN" ? "/admin" : "/";
 
   const handleLogout = () => {
     localStorage.removeItem("hakwatch_user");
@@ -11,7 +12,7 @@ function Navbar() {
 
   return (
     <nav className="navbar-container">
-      <Link to="/">
+      <Link to={homePath}>
         <img
           alt="HackWatchLogo"
           src="./src/assets/images/HakLogo.png"

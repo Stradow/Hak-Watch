@@ -90,6 +90,10 @@ function HomePage() {
                   <Popup trigger={<button>View Details</button>} modal nested>
                     {(close) => (
                       <div className="popup-content">
+                        <p>
+                          {featuredMovie.description ||
+                            "No description available."}
+                        </p>
                         <button
                           type="button"
                           className="popup-close"
@@ -97,11 +101,6 @@ function HomePage() {
                         >
                           ✕
                         </button>
-
-                        <p>
-                          {featuredMovie.description ||
-                            "No description available."}
-                        </p>
                       </div>
                     )}
                   </Popup>
@@ -128,6 +127,10 @@ function HomePage() {
                   <Popup trigger={<button>View Details</button>} modal nested>
                     {(close) => (
                       <div className="popup-content">
+                        <p>
+                          {featuredSeries.description ||
+                            "No description available."}
+                        </p>
                         <button
                           type="button"
                           className="popup-close"
@@ -135,11 +138,6 @@ function HomePage() {
                         >
                           ✕
                         </button>
-
-                        <p>
-                          {featuredSeries.description ||
-                            "No description available."}
-                        </p>
                       </div>
                     )}
                   </Popup>
@@ -166,6 +164,10 @@ function HomePage() {
                   <Popup trigger={<button>View Details</button>} modal nested>
                     {(close) => (
                       <div className="popup-content">
+                        <p>
+                          {featuredSeries.description ||
+                            "No description available."}
+                        </p>
                         <button
                           type="button"
                           className="popup-close"
@@ -173,11 +175,6 @@ function HomePage() {
                         >
                           ✕
                         </button>
-
-                        <p>
-                          {featuredSeries.description ||
-                            "No description available."}
-                        </p>
                       </div>
                     )}
                   </Popup>

@@ -120,14 +120,6 @@ function AnimePage() {
             >
               {(close) => (
                 <div className="series-popup">
-                  <button
-                    type="button"
-                    className="series-popup-close"
-                    onClick={close}
-                  >
-                    ✕
-                  </button>
-
                   <div className="series-popup-body">
                     <img
                       src={animeItem.poster}
@@ -179,6 +171,13 @@ function AnimePage() {
                       )}
                     </div>
                   </div>
+                  <button
+                    type="button"
+                    className="series-popup-close"
+                    onClick={close}
+                  >
+                    ✕
+                  </button>
                 </div>
               )}
             </Popup>

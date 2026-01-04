@@ -121,14 +121,6 @@ function MoviesPage() {
             >
               {(close) => (
                 <div className="movie-popup">
-                  <button
-                    type="button"
-                    className="movie-popup-close"
-                    onClick={close}
-                  >
-                    ✕
-                  </button>
-
                   <div className="movie-popup-body">
                     <img
                       src={movie.poster}
@@ -180,6 +172,13 @@ function MoviesPage() {
                       )}
                     </div>
                   </div>
+                  <button
+                    type="button"
+                    className="movie-popup-close"
+                    onClick={close}
+                  >
+                    ✕
+                  </button>
                 </div>
               )}
             </Popup>
