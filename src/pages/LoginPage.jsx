@@ -30,11 +30,6 @@ function LoginPage() {
         return;
       }
 
-      if (user.role !== "USER") {
-        setErrorMessage("Access restricted to standard users only.");
-        return;
-      }
-
       const loggedUser = {
         id: user.id,
         username: user.username,
@@ -46,7 +41,11 @@ function LoginPage() {
       setSuccessMessage("Welcome to HAK");
 
       setTimeout(() => {
-        navigate("/");
+        if (loggedUser.role === "ADMIN") {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
       }, 800);
     } catch (error) {
       setErrorMessage(
