@@ -15,13 +15,13 @@ function AnimePage() {
   const userId = user ? user.id : null;
 
   useEffect(() => {
-    const fetchData = async () => {
+    async function fetchData() {
       try {
         setLoading(true);
         setErrorMessage("");
 
-        const animeRespond = await axios.get(`${API_URL}/anime`);
-        setAnime(animeRespond.data || []);
+        const animeRes = await axios.get(`${API_URL}/anime`);
+        setAnime(animeRes.data || []);
 
         if (userId) {
           const favRes = await axios.get(`${API_URL}/favorites`, {
@@ -33,35 +33,37 @@ function AnimePage() {
         }
       } catch (error) {
         setErrorMessage(
-          "Server error. Make sure JSON server is running on port 4000."
+          "Server error. Make sure JSON Server is running on port 4000."
         );
       } finally {
         setLoading(false);
       }
-    };
+    }
+
     fetchData();
   }, [userId]);
 
-  const addToWatchlist = async (anime) => {
+  const addToWatchlist = async (animeItem) => {
     if (!user) return;
 
     try {
-      const existsRes = await axios.get(`${API_URL}/watchlist`, {
-        params: { userId: user.id, animeId: anime.id },
+      const watchRes = await axios.get(`${API_URL}/watchlist`, {
+        params: { userId: user.id },
       });
 
-      if ((existsRes.data || []).length > 0) return;
+      const alreadyExists = (watchRes.data || []).some(
+        (entry) => entry.animeId === animeItem.id
+      );
+
+      if (alreadyExists) return;
 
       await axios.post(`${API_URL}/watchlist`, {
         userId: user.id,
-        animeId: anime.id,
+        animeId: animeItem.id,
         createdAt: new Date().toISOString(),
       });
     } catch (error) {
-      console.log(
-        "ADD TO WATCHLIST (ANIME) ERROR:",
-        error?.response?.data || error
-      );
+      console.log("ADD TO WATCHLIST ERROR:", error);
     }
   };
 
@@ -69,10 +71,10 @@ function AnimePage() {
     return favorites.some((fav) => fav.animeId === animeId);
   };
 
-  const toggleFavorite = async (anime) => {
+  const toggleFavorite = async (animeItem) => {
     if (!userId) return;
 
-    const existing = favorites.find((fav) => fav.animeId === anime.id);
+    const existing = favorites.find((fav) => fav.animeId === animeItem.id);
 
     try {
       if (existing) {
@@ -81,12 +83,14 @@ function AnimePage() {
       } else {
         const response = await axios.post(`${API_URL}/favorites`, {
           userId,
-          animeId: anime.id,
+          animeId: animeItem.id,
           createdAt: new Date().toISOString(),
         });
         setFavorites((prev) => [...prev, response.data]);
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log("TOGGLE FAVORITE ERROR:", error);
+    }
   };
 
   return (
@@ -189,4 +193,5 @@ function AnimePage() {
     </section>
   );
 }
+
 export default AnimePage;
