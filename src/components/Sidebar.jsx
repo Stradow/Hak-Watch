@@ -9,7 +9,7 @@ function Sidebar() {
             <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <NavLink to="/movies">Films</NavLink>
+            <NavLink to="/movies">Movies</NavLink>
           </li>
           <li>
             <NavLink to="/series">Series</NavLink>

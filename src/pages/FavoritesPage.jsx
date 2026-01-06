@@ -9,73 +9,78 @@ function FavoritesPage() {
   useEffect(() => {
     if (!loggedUser) {
       console.log("you need to log in");
-      return
+      return;
     }
+
     async function getFavourites() {
       try {
         const favRes = await axios.get(
           `http://localhost:4000/favorites?userId=${loggedUser.id}`
         );
 
-        const movieIds = favRes.data.map((currentMovieId) => {
-          return currentMovieId.movieId;
-        });
+        const movieIds = favRes.data
+          .map((currentItem) => currentItem.movieId)
+          .filter((id) => typeof id === "number");
+
+        const seriesIds = favRes.data
+          .map((currentItem) => currentItem.seriesId)
+          .filter((id) => typeof id === "number");
+
+        const animeIds = favRes.data
+          .map((currentItem) => currentItem.animeId)
+          .filter((id) => typeof id === "number");
 
         const moviesRes = await axios.get("http://localhost:4000/movies");
+        const seriesRes = await axios.get("http://localhost:4000/series");
+        const animeRes = await axios.get("http://localhost:4000/anime");
 
         const favoriteMovies = moviesRes.data.filter((currentMovie) => {
           return movieIds.includes(currentMovie.id);
         });
 
-        setFavourites(favoriteMovies);
+        const favoriteSeries = seriesRes.data.filter((currentSeries) => {
+          return seriesIds.includes(currentSeries.id);
+        });
+
+        const favoriteAnime = animeRes.data.filter((currentAnime) => {
+          return animeIds.includes(currentAnime.id);
+        });
+
+        setFavourites([...favoriteMovies, ...favoriteSeries, ...favoriteAnime]);
       } catch (error) {
         console.log(error);
       }
     }
+
     getFavourites();
   }, []);
 
   return (
-    <>
-      <h1>FavoritesPage</h1>
-      <div>
+    <section className="page-container">
+      <header className="page-header">
+        <h1 className="page-title">Favorites</h1>
+      </header>
+
+      <main className="cards-grid fav-cards">
         {favourites.map((oneItem) => {
           return (
-            <div
-              className="card-container"
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                marginBottom: "20px",
-                alignItems: "center",
-                justifyContent: "space-between",
-                border: "1px solid white",
-                padding: "10px",
-              }}
-              key={oneItem.id}
-            >
+            <article className="card card-horizontal" key={oneItem.id}>
               <img
                 src={oneItem.poster}
                 alt={oneItem.title}
-                style={{ height: "300px" }}
+                className="card-img fav-img"
               />
-              <div
-                className="card-info"
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  color: "white",
-                  marginLeft: "10px",
-                }}
-              >
-                <h2>{oneItem.title}</h2>
-                <h3>{oneItem.rating}</h3>
+
+              <div className="card-body">
+                <h2 className="card-title">{oneItem.title}</h2>
+                <p className="card-meta">Rating: {oneItem.rating}</p>
               </div>
-            </div>
+            </article>
           );
         })}
-      </div>
-    </>
+      </main>
+    </section>
   );
 }
+
 export default FavoritesPage;

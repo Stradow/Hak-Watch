@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+const API_URL = "http://localhost:4000";
+
 function WatchListPage() {
   const [watchlist, setWatchlist] = useState([]);
 
@@ -9,55 +11,135 @@ function WatchListPage() {
   useEffect(() => {
     if (!loggedUser) {
       console.log("you need to log in");
-      return
+      return;
     }
+
     async function getWatchlist() {
       try {
         const watchRes = await axios.get(
-          `http://localhost:4000/watchlist?userId=${loggedUser.id}`
+          `${API_URL}/watchlist?userId=${loggedUser.id}`
         );
 
-        const movieIds = watchRes.data.map((currentMovieId) => {
-          return currentMovieId.movieId;
-        });
+        const entries = watchRes.data || [];
 
-        const moviesRes = await axios.get("http://localhost:4000/movies");
+        const movieIds = entries
+          .map((e) => e.movieId)
+          .filter((id) => typeof id === "number");
 
-        const watchlistMovies = moviesRes.data.filter((currentMovie) => {
-          return movieIds.includes(currentMovie.id);
-        });
+        const seriesIds = entries
+          .map((e) => e.seriesId)
+          .filter((id) => typeof id === "number");
 
-        setWatchlist(watchlistMovies);
+        const animeIds = entries
+          .map((e) => e.animeId)
+          .filter((id) => typeof id === "number");
+
+        const [moviesRes, seriesRes, animeRes] = await Promise.all([
+          axios.get(`${API_URL}/movies`),
+          axios.get(`${API_URL}/series`),
+          axios.get(`${API_URL}/anime`),
+        ]);
+
+        const movies = moviesRes.data || [];
+        const series = seriesRes.data || [];
+        const anime = animeRes.data || [];
+
+        const moviesById = new Map(movies.map((m) => [m.id, m]));
+        const seriesById = new Map(series.map((s) => [s.id, s]));
+        const animeById = new Map(anime.map((a) => [a.id, a]));
+
+        const combined = entries
+          .map((entry) => {
+            if (entry.movieId && moviesById.has(entry.movieId)) {
+              return {
+                entryId: entry.id,
+                type: "Movie",
+                item: moviesById.get(entry.movieId),
+              };
+            }
+
+            if (entry.seriesId && seriesById.has(entry.seriesId)) {
+              return {
+                entryId: entry.id,
+                type: "Series",
+                item: seriesById.get(entry.seriesId),
+              };
+            }
+
+            if (entry.animeId && animeById.has(entry.animeId)) {
+              return {
+                entryId: entry.id,
+                type: "Anime",
+                item: animeById.get(entry.animeId),
+              };
+            }
+
+            return null;
+          })
+          .filter(Boolean);
+
+        setWatchlist(combined);
       } catch (error) {
         console.log(error);
       }
     }
+
     getWatchlist();
   }, []);
 
+  const markAsWatched = async (entryId) => {
+    try {
+      await axios.delete(`${API_URL}/watchlist/${entryId}`);
+      setWatchlist((prev) => prev.filter((w) => w.entryId !== entryId));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <>
-      <h1>Watchlist Page</h1>
-      <div>
-        {watchlist.map((oneItem) => {
+    <section className="page-container">
+      <header className="page-header">
+        <h1 className="page-title">Watchlist</h1>
+      </header>
+
+      <main className="cards-grid watchlist-card">
+        {watchlist.map((oneEntry) => {
+          const oneItem = oneEntry.item;
+
           return (
-            <div className="card-container" style={{display: "flex", flexDirection: "row", marginBottom: "20px", alignItems: "center", justifyContent: "space-evenly", border: "1px solid white", padding: "10px"}}               key={oneItem.id}
->
+            <article className="card card-horizontal" key={oneEntry.entryId}>
               <img
                 src={oneItem.poster}
                 alt={oneItem.title}
-                style={{ height: "300px" }}
+                className="card-img"
               />
-              <div className="card-info" style={{display: "flex", flexDirection: "column", color:"white", marginLeft: "10px"}}>
-                <h2>{oneItem.title}</h2>
-                <h3>{oneItem.description}</h3>
-                <h3>{oneItem.rating}</h3>
+
+              <div className="card-body">
+                <h2 className="card-title">{oneItem.title}</h2>
+
+                {oneItem.description && (
+                  <p className="card-description">{oneItem.description}</p>
+                )}
+
+                <p className="card-meta">
+                  <span>{oneEntry.type}</span>
+                  <span>Rating: {oneItem.rating}</span>
+                </p>
+
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={() => markAsWatched(oneEntry.entryId)}
+                >
+                  Watched
+                </button>
               </div>
-            </div>
+            </article>
           );
         })}
-      </div>
-    </>
+      </main>
+    </section>
   );
 }
+
 export default WatchListPage;
