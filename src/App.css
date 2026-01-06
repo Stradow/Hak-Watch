@@ -10,7 +10,7 @@
 }
 
 /* =========================
-   SIDEBAR (liste)
+   SIDEBAR (list)
    ========================= */
 
 .sidebar ul {
@@ -149,7 +149,6 @@ button:active {
   z-index: 100;
 }
 
-/* LEFT: logo + title */
 .navbar-container a {
   display: flex;
   align-items: center;
@@ -167,7 +166,6 @@ button:active {
   filter: drop-shadow(0 0 6px rgba(0, 255, 156, 0.5));
 }
 
-/* CENTER sentence */
 .navbar-sentence {
   color: #00ff9c;
   font-size: 1.8rem;
@@ -176,7 +174,6 @@ button:active {
   filter: drop-shadow(0 0 6px rgba(0, 255, 156, 0.5));
 }
 
-/* RIGHT actions */
 .navbar-container > div {
   display: flex;
   align-items: center;
@@ -189,7 +186,6 @@ button:active {
   letter-spacing: 0.5px;
 }
 
-/* Buttons */
 .login-btn,
 .logout-btn {
   background: transparent;
@@ -212,7 +208,6 @@ button:active {
   box-shadow: 0 0 10px rgba(0, 255, 156, 0.6);
 }
 
-/* Responsive safeguard */
 @media (max-height: 600px) {
   .navbar-container {
     height: 64px;
@@ -222,6 +217,7 @@ button:active {
     height: 36px;
   }
 }
+
 .navbar-username::before {
   content: "●";
   color: #00ff9c;
@@ -233,7 +229,6 @@ button:active {
    NOT FOUND PAGE
    ========================= */
 
-/* Container */
 .notfound-container {
   min-height: calc(100vh - 10vh);
 
@@ -254,7 +249,7 @@ button:active {
       rgba(0, 0, 0, 0) 75%
     );
 }
-/* Logo */
+
 .notfound-haklogo {
   height: 90px;
   width: auto;
@@ -262,8 +257,6 @@ button:active {
 
   filter: drop-shadow(0 0 12px rgba(0, 255, 156, 0.6));
 }
-
-/* Error code */
 
 .notfound-container > div {
   display: flex;
@@ -281,8 +274,6 @@ button:active {
   text-shadow: 0 0 10px rgba(0, 255, 156, 0.6), 0 0 24px rgba(0, 255, 156, 0.4);
 }
 
-/* Subtitle */
-
 .notfound-container h2 {
   margin: 0;
   font-size: 1.5rem;
@@ -292,7 +283,6 @@ button:active {
   text-shadow: 0 0 4px rgba(0, 255, 156, 0.5), 0 0 10px rgba(0, 255, 156, 0.3);
 }
 
-/* Description */
 .notfound-container p {
   max-width: 420px;
   font-size: 0.95rem;
@@ -302,14 +292,12 @@ button:active {
   text-shadow: 0 0 3px rgba(0, 255, 156, 0.4);
 }
 
-/* Buttons container */
 .notfound-actions {
   display: flex;
   gap: 1rem;
   margin-top: 1.5rem;
 }
 
-/* Buttons */
 .backhome-btn,
 .gotowatchlist-btn {
   background: transparent;
@@ -332,7 +320,6 @@ button:active {
   box-shadow: 0 0 14px rgba(0, 255, 156, 0.6);
 }
 
-/* Mobile */
 @media (max-width: 480px) {
   .notfound-container h1 {
     font-size: 4.5rem;
@@ -350,7 +337,7 @@ button:active {
 }
 
 /* =========================
-   SIDEBAR 
+   SIDEBAR
    ========================= */
 
 .sidebar-container {
@@ -368,7 +355,6 @@ button:active {
   box-shadow: 0 2px 12px rgba(0, 255, 156, 0.08);
 }
 
-/* List */
 .sidebar-container ul {
   display: flex;
   align-items: center;
@@ -379,12 +365,10 @@ button:active {
   margin: 0;
 }
 
-/* Items */
 .sidebar-container li {
   display: flex;
 }
 
-/* Links */
 .sidebar-container a {
   padding: 0.5rem 1rem;
 
@@ -398,13 +382,11 @@ button:active {
   transition: all 0.25s ease;
 }
 
-/* Hover */
 .sidebar-container a:hover {
   color: #00ff9c;
   text-shadow: 0 0 6px rgba(0, 255, 156, 0.4);
 }
 
-/* Active link */
 .sidebar-container a.active {
   color: #00ff9c;
   border-bottom: 2px solid #00ff9c;
@@ -412,7 +394,6 @@ button:active {
   text-shadow: 0 0 4px rgba(0, 255, 156, 0.6), 0 0 10px rgba(0, 255, 156, 0.3);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .sidebar-container {
     height: auto;
@@ -437,7 +418,6 @@ button:active {
   color: #9fe6c3;
 }
 
-/* Header */
 .homepage-container header {
   margin-bottom: 3rem;
   text-align: center;
@@ -456,21 +436,18 @@ button:active {
   opacity: 0.85;
 }
 
-/* Main */
 .homepage-container main h2 {
   color: #00ff9c;
   margin-bottom: 1.5rem;
   letter-spacing: 1px;
 }
 
-/* Featured grid (3 cards side by side) */
 .homepage-container main > div {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
-/* Cards */
 .homepage-container article {
   background: linear-gradient(180deg, #0e1411 0%, #0b0f0d 100%);
   border: 1px solid rgba(0, 255, 156, 0.2);
@@ -493,7 +470,6 @@ button:active {
   opacity: 0.85;
 }
 
-/* Poster */
 .featured-poster {
   width: 100%;
   max-height: 320px;
@@ -506,7 +482,6 @@ button:active {
   box-shadow: 0 0 18px rgba(0, 255, 156, 0.08);
 }
 
-/* Buttons */
 .homepage-container button {
   background: transparent;
   border: 1px solid #00ff9c;
@@ -528,7 +503,6 @@ button:active {
   box-shadow: 0 0 14px rgba(0, 255, 156, 0.6);
 }
 
-/* Responsive */
 @media (max-width: 900px) {
   .homepage-container main > div {
     grid-template-columns: repeat(2, 1fr);
@@ -549,14 +523,7 @@ button:active {
    POPUP – HOME PAGE
    ========================= */
 
-/* Overlay (background) */
-.popup-overlay {
-  background: rgba(11, 15, 13, 0.88);
-  backdrop-filter: blur(2px);
-}
-
-/* Popup container */
-.popup-content {
+.homepage-container .popup-content {
   background: linear-gradient(180deg, #0e1411 0%, #0b0f0d 100%);
   color: #9fe6c3;
 
@@ -564,21 +531,59 @@ button:active {
   border-radius: 12px;
 
   padding: 1.75rem;
-  padding-bottom: 3.25rem; /* space for the close button */
+  padding-bottom: 3.25rem;
 
   width: 90%;
   max-width: 480px;
   max-height: 70vh;
 
   overflow-y: auto;
-  overflow-x: hidden; /* prevents horizontal scrollbar */
+  overflow-x: hidden;
 
   box-shadow: 0 0 20px rgba(0, 255, 156, 0.25), 0 0 60px rgba(0, 255, 156, 0.15);
 
   position: relative;
+
+  animation: popupFade 0.25s ease-out;
 }
 
-/* Close button: bottom centered */
+.homepage-container .popup-close {
+  position: sticky;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  width: 20%;
+  margin-top: 1rem;
+  margin-left: 1.5rem;
+
+  background: transparent;
+  border: 1px solid rgba(0, 255, 156, 0.45);
+  color: #00ff9c;
+
+  padding: 0.6rem 0;
+  border-radius: 10px;
+
+  font-size: 1.1rem;
+  cursor: pointer;
+
+  text-align: center;
+
+  backdrop-filter: blur(2px);
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+.homepage-container .popup-close:hover {
+  transform: scale(1.03);
+  opacity: 0.9;
+  box-shadow: 0 0 14px rgba(0, 255, 156, 0.35);
+}
+
+.popup-overlay {
+  background: rgba(11, 15, 13, 0.88);
+  backdrop-filter: blur(2px);
+}
+
 .popup-close {
   position: sticky;
   bottom: 0;
@@ -626,41 +631,57 @@ button:active {
 }
 
 /* =========================
-   MOVIES PAGE
+   MOVIES / SERIES / ANIME / WATCHLIST / FAVORITES PAGES
    ========================= */
 
-.moviespage-container {
+.page-container {
   min-height: calc(100vh - 18vh);
   padding: 2.5rem;
   background: #0b0f0d;
   color: #9fe6c3;
 }
 
-.moviespage-header {
+.page-header {
   text-align: center;
   margin-bottom: 2rem;
 }
 
-.moviespage-header h1 {
+.page-title {
   color: #00ff9c;
   font-size: 2.2rem;
   letter-spacing: 2px;
+  margin: 0;
   text-shadow: 0 0 6px rgba(0, 255, 156, 0.6), 0 0 18px rgba(0, 255, 156, 0.3);
 }
 
-.moviespage-header p {
+.page-subtitle {
   margin-top: 0.75rem;
   opacity: 0.85;
 }
 
-.movies-grid {
+.status-loading,
+.status-error {
+  text-align: center;
+  margin: 1rem 0 0 0;
+  opacity: 0.9;
+}
+
+.status-error {
+  color: #ff7b7b;
+  text-shadow: 0 0 6px rgba(255, 123, 123, 0.25);
+}
+
+/* =========================
+   CARDS GRID
+   ========================= */
+
+.cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
 }
 
-/* Card */
-.movie-card {
+.card {
   background: linear-gradient(180deg, #0e1411 0%, #0b0f0d 100%);
   border: 1px solid rgba(0, 255, 156, 0.2);
   border-radius: 10px;
@@ -671,12 +692,12 @@ button:active {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.movie-card:hover {
+.card:hover {
   transform: translateY(-3px);
   box-shadow: 0 0 22px rgba(0, 255, 156, 0.12);
 }
 
-.movie-poster {
+.card-img {
   width: 100%;
   height: 320px;
   object-fit: contain;
@@ -684,17 +705,18 @@ button:active {
   display: block;
 }
 
-.movie-info {
+.card-body {
   padding: 1rem 1.1rem 1.2rem 1.1rem;
 }
 
-.movie-title {
+.card-title {
   color: #00ff9c;
   font-size: 1rem;
   margin: 0 0 0.6rem 0;
+  text-shadow: 0 0 6px rgba(0, 255, 156, 0.25);
 }
 
-.movie-meta {
+.card-meta {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -703,18 +725,56 @@ button:active {
   opacity: 0.85;
 }
 
-/* =========================
-   POPUP – MOVIE DETAILS
-   ========================= */
+.card-description {
+  margin: 0.6rem 0 0.8rem 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  opacity: 0.9;
 
-/* Overlay (background) */
-.popup-overlay {
-  background: rgba(11, 15, 13, 0.88);
-  backdrop-filter: blur(2px);
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
-/* Popup container */
-.movie-popup {
+.card.card-horizontal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.card.card-horizontal .card-img {
+  width: 180px;
+  height: 220px;
+  flex-shrink: 0;
+  border-right: 1px solid rgba(0, 255, 156, 0.12);
+}
+
+.card.card-horizontal .card-body {
+  padding: 1rem;
+}
+
+@media (max-width: 520px) {
+  .card.card-horizontal {
+    flex-direction: column;
+  }
+
+  .card.card-horizontal .card-img {
+    width: 100%;
+    height: 280px;
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 255, 156, 0.12);
+  }
+}
+
+.fav-img {
+  align-items: center;
+}
+
+/* =========================
+   POPUP – DETAILS (MOVIES / SERIES / ANIME)
+   ========================= */
+
+.popup-container {
   background: linear-gradient(180deg, #0e1411 0%, #0b0f0d 100%);
   color: #9fe6c3;
 
@@ -726,33 +786,25 @@ button:active {
   max-height: 80vh;
 
   padding: 1.5rem;
-  padding-bottom: 3.25rem;
-
-  overflow-y: auto;
-  overflow-x: hidden;
 
   box-shadow: 0 0 20px rgba(0, 255, 156, 0.25), 0 0 60px rgba(0, 255, 156, 0.15);
 
   position: relative;
-
   animation: popupFade 0.25s ease-out;
 }
 
-/* Prevent inner elements from forcing horizontal scroll */
-.movie-popup * {
+.popup-container * {
   max-width: 100%;
 }
 
-/* Popup body layout */
-.movie-popup-body {
+.popup-container .popup-content {
   display: grid;
   grid-template-columns: 280px 1fr;
   gap: 1.5rem;
   align-items: start;
 }
 
-/* Poster */
-.movie-popup-poster {
+.popup-img {
   width: 100%;
   height: 380px;
 
@@ -761,229 +813,48 @@ button:active {
 
   border-radius: 10px;
   border: 1px solid rgba(0, 255, 156, 0.2);
-
   box-shadow: 0 0 16px rgba(0, 255, 156, 0.12);
 }
 
-/* Title */
-.movie-popup-title {
+.popup-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-title {
   color: #00ff9c;
   margin: 0 0 0.75rem 0;
-
   text-shadow: 0 0 6px rgba(0, 255, 156, 0.6), 0 0 18px rgba(0, 255, 156, 0.25);
 }
 
-/* Stats */
-.movie-popup-stats {
+.popup-meta {
   display: flex;
   gap: 1.25rem;
   margin: 0 0 1rem 0;
   opacity: 0.9;
 }
 
-/* Description */
-.movie-popup-description {
+.popup-description {
   margin: 0 0 1.25rem 0;
   line-height: 1.6;
   opacity: 0.9;
 
-  overflow-wrap: anywhere;
   word-break: break-word;
 }
 
-/* Auth message */
-.movie-popup-authmsg {
+.popup-message {
   margin: 0 0 1rem 0;
   opacity: 0.85;
 }
 
-/* Actions */
-.movie-popup-actions {
+.popup-actions {
   display: flex;
   gap: 0.75rem;
   flex-wrap: wrap;
 }
 
-/* Buttons */
-.movie-popup-btn {
-  background: transparent;
-  border: 1px solid #00ff9c;
-  color: #00ff9c;
-
-  padding: 0.55rem 1.2rem;
-  border-radius: 6px;
-
-  font-size: 0.85rem;
-  cursor: pointer;
-
-  transition: all 0.25s ease;
-}
-
-.movie-popup-btn:hover {
-  background: #00ff9c;
-  color: #0b0f0d;
-  box-shadow: 0 0 14px rgba(0, 255, 156, 0.6);
-}
-
-.movie-popup-btn-like {
-  border-color: rgba(0, 255, 156, 0.6);
-}
-
-/* Close button – bottom centered */
-.movie-popup-close {
-  position: sticky;
-  bottom: 0;
-
-  display: block;
-  width: 100%;
-  margin-top: 1.25rem;
-
-  background: rgba(11, 15, 13, 0.65);
-  border: 1px solid rgba(0, 255, 156, 0.45);
-  color: #00ff9c;
-
-  padding: 0.65rem 0;
-  border-radius: 10px;
-
-  font-size: 1.1rem;
-  cursor: pointer;
-
-  text-align: center;
-
-  backdrop-filter: blur(2px);
-
-  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
-}
-
-.movie-popup-close:hover {
-  transform: scale(1.03);
-  opacity: 0.9;
-  box-shadow: 0 0 14px rgba(0, 255, 156, 0.35);
-}
-
-/* Animation */
-@keyframes popupFade {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* Responsive */
-@media (max-width: 720px) {
-  .movie-popup-body {
-    grid-template-columns: 1fr;
-  }
-
-  .movie-popup-poster {
-    height: 300px;
-  }
-}
-
-/* =========================
-   SERIES PAGE & Anime PAGE
-   ========================= */
-
-.seriespage-container {
-  min-height: calc(100vh - 18vh);
-  padding: 2.5rem;
-  background: #0b0f0d;
-  color: #9fe6c3;
-}
-
-.seriespage-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.seriespage-header h1 {
-  color: #00ff9c;
-  font-size: 2.2rem;
-  letter-spacing: 2px;
-  text-shadow: 0 0 6px rgba(0, 255, 156, 0.6), 0 0 18px rgba(0, 255, 156, 0.3);
-}
-
-.seriespage-header p {
-  margin-top: 0.75rem;
-  opacity: 0.85;
-}
-
-.series-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-}
-
-/* Card */
-.series-card {
-  background: linear-gradient(180deg, #0e1411 0%, #0b0f0d 100%);
-  border: 1px solid rgba(0, 255, 156, 0.2);
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 0 14px rgba(0, 255, 156, 0.05);
-
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.series-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 22px rgba(0, 255, 156, 0.12);
-}
-
-.series-poster {
-  width: 100%;
-  height: 320px;
-  object-fit: contain;
-  background-color: #0b0f0d;
-  display: block;
-}
-
-.series-info {
-  padding: 1rem 1.1rem 1.2rem 1.1rem;
-}
-
-.series-title {
-  color: #00ff9c;
-  font-size: 1rem;
-  margin: 0 0 0.6rem 0;
-}
-
-.series-meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  margin: 0;
-  font-size: 0.9rem;
-  opacity: 0.85;
-}
-
-/* =========================
-   POPUP – SERIES DETAILS & Anime Page
-   ========================= */
-
-.series-popup {
-  background: linear-gradient(180deg, #0e1411 0%, #0b0f0d 100%);
-  color: #9fe6c3;
-
-  border: 1px solid rgba(0, 255, 156, 0.35);
-  border-radius: 12px;
-
-  width: 92%;
-  max-width: 860px;
-
-  box-shadow: 0 0 20px rgba(0, 255, 156, 0.25), 0 0 60px rgba(0, 255, 156, 0.15);
-
+.popup-close {
   position: relative;
-  padding: 1.5rem;
-}
-
-.series-popup-close {
-  position: absolute;
   top: 10px;
   right: 12px;
 
@@ -997,59 +868,26 @@ button:active {
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.series-popup-close:hover {
+.popup-close:hover {
   transform: scale(1.15);
   opacity: 0.85;
 }
 
-.series-popup-body {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 1.5rem;
-  align-items: start;
+@media (max-width: 720px) {
+  .popup-container .popup-content {
+    grid-template-columns: 1fr;
+  }
+
+  .popup-img {
+    height: 300px;
+  }
 }
 
-.series-popup-poster {
-  width: 100%;
-  height: 380px;
-  object-fit: contain;
-  background-color: #0b0f0d;
+/* =========================
+   BUTTONS – POPUP (LOCAL OVERRIDES)
+   ========================= */
 
-  border-radius: 10px;
-  border: 1px solid rgba(0, 255, 156, 0.2);
-}
-
-.series-popup-title {
-  color: #00ff9c;
-  margin: 0 0 0.75rem 0;
-  text-shadow: 0 0 6px rgba(0, 255, 156, 0.6), 0 0 18px rgba(0, 255, 156, 0.25);
-}
-
-.series-popup-stats {
-  display: flex;
-  gap: 1.25rem;
-  margin: 0 0 1rem 0;
-  opacity: 0.9;
-}
-
-.series-popup-description {
-  margin: 0 0 1.25rem 0;
-  line-height: 1.6;
-  opacity: 0.9;
-}
-
-.series-popup-authmsg {
-  margin: 0;
-  opacity: 0.85;
-}
-
-.series-popup-actions {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.series-popup-btn {
+.popup-container .btn {
   background: transparent;
   border: 1px solid #00ff9c;
   color: #00ff9c;
@@ -1063,29 +901,34 @@ button:active {
   transition: all 0.25s ease;
 }
 
-.series-popup-btn:hover {
+.popup-container .btn:hover {
   background: #00ff9c;
   color: #0b0f0d;
   box-shadow: 0 0 14px rgba(0, 255, 156, 0.6);
 }
 
-.series-popup-btn-like {
+.popup-container .btn-primary {
+  border-color: rgba(0, 255, 156, 0.85);
+}
+
+.popup-container .btn-icon {
+  width: 44px;
+  padding: 0.55rem 0.75rem;
   border-color: rgba(0, 255, 156, 0.6);
 }
 
-@media (max-width: 720px) {
-  .series-popup-body {
-    grid-template-columns: 1fr;
-  }
-
-  .series-popup-poster {
-    height: 300px;
-  }
+.popup-container .btn-icon i {
+  font-size: 1.05rem;
+  line-height: 1;
 }
+/* =========================
+   BUTTONS – POPUP (Whatchlist / Favorite) OVERRIDE
+   ========================= */
 
 /* =========================
     LOGIN PAGE
    ========================= */
+
 .login {
   display: flex;
   justify-content: center;
@@ -1171,7 +1014,6 @@ button:active {
   font-weight: 600;
 }
 
-/* Error and Success messages */
 .login > p {
   position: absolute;
   top: calc(28vh + 1rem);
@@ -1273,7 +1115,6 @@ button:active {
   min-height: calc(100vh - 18vh);
 }
 
-/* Sidebar already has fixed width */
 .admin-content {
   flex: 1;
   padding: 2.5rem;
@@ -1301,7 +1142,6 @@ button:active {
   gap: 1rem;
 }
 
-/* Links */
 .admin-sidebar a {
   color: #9fe6c3;
   text-decoration: none;
@@ -1315,14 +1155,12 @@ button:active {
   transition: all 0.25s ease;
 }
 
-/* Hover */
 .admin-sidebar a:hover {
   background: rgba(0, 255, 156, 0.08);
   color: #00ff9c;
   box-shadow: 0 0 10px rgba(0, 255, 156, 0.35);
 }
 
-/* Active link (NavLink) */
 .admin-sidebar a.active {
   background: rgba(0, 255, 156, 0.15);
   color: #00ff9c;
@@ -1353,7 +1191,6 @@ button:active {
   position: relative;
 }
 
-/* Dark overlay for readability */
 .admin-home-container::before {
   content: "";
   position: absolute;
@@ -1361,7 +1198,6 @@ button:active {
   background: rgba(11, 15, 13, 0.75);
 }
 
-/* Content box */
 .admin-home-header {
   position: relative;
   z-index: 1;
@@ -1411,7 +1247,6 @@ button:active {
   position: relative;
 }
 
-/* Dark overlay for readability */
 .admin-movies-container::before {
   content: "";
   position: absolute;
@@ -1420,13 +1255,11 @@ button:active {
   z-index: 0;
 }
 
-/* Keep content above overlay */
 .admin-movies-container > * {
   position: relative;
   z-index: 1;
 }
 
-/* Header */
 .admin-page-header {
   margin-bottom: 2.5rem;
   text-align: center;
@@ -1445,14 +1278,12 @@ button:active {
   opacity: 0.85;
 }
 
-/* Movie grid */
 .admin-movies-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 2rem;
 }
 
-/* Movie card */
 .admin-movie-row {
   background: rgba(11, 15, 13, 0.95);
   border: 1px solid rgba(0, 255, 156, 0.25);
@@ -1476,7 +1307,6 @@ button:active {
     inset 0 0 14px rgba(0, 255, 156, 0.1);
 }
 
-/* Movie preview text */
 .admin-movie-preview p {
   margin: 0.2rem 0;
   font-size: 0.85rem;
@@ -1488,7 +1318,6 @@ button:active {
   font-size: 1rem;
 }
 
-/* Movie image inside admin card */
 .admin-movie-img {
   width: 100%;
   height: 220px;
@@ -1503,14 +1332,12 @@ button:active {
   box-shadow: 0 0 16px rgba(0, 255, 156, 0.12);
 }
 
-/* URL smaller */
 .admin-movie-url {
   font-size: 0.7rem;
   opacity: 0.6;
   word-break: break-all;
 }
 
-/* Actions */
 .admin-movie-actions {
   display: flex;
   gap: 0.75rem;
@@ -1537,7 +1364,6 @@ button:active {
   box-shadow: 0 0 12px rgba(0, 255, 156, 0.6);
 }
 
-/* Edit form inside card */
 .admin-edit-form {
   margin-top: 1rem;
   border-top: 1px solid rgba(0, 255, 156, 0.2);
@@ -1585,7 +1411,6 @@ button:active {
   letter-spacing: 0.3px;
 }
 
-/* Dark inputs */
 .admin-form input,
 .admin-form textarea {
   width: 100%;
@@ -1608,14 +1433,12 @@ button:active {
   min-height: 110px;
 }
 
-/* Focus glow */
 .admin-form input:focus,
 .admin-form textarea:focus {
   border-color: rgba(0, 255, 156, 0.6);
   box-shadow: 0 0 14px rgba(0, 255, 156, 0.22);
 }
 
-/* Buttons row */
 .admin-form-actions {
   display: flex;
   gap: 0.9rem;

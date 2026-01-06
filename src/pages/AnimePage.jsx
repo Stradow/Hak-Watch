@@ -57,7 +57,12 @@ function AnimePage() {
         animeId: anime.id,
         createdAt: new Date().toISOString(),
       });
-    } catch (error) {}
+    } catch (error) {
+      console.log(
+        "ADD TO WATCHLIST (ANIME) ERROR:",
+        error?.response?.data || error
+      );
+    }
   };
 
   const isAnimeLiked = (animeId) => {
@@ -85,32 +90,32 @@ function AnimePage() {
   };
 
   return (
-    <section className="seriespage-container">
-      <header className="seriespage-header">
-        <h1>Anime</h1>
-        <p>Put the search bar</p>
+    <section className="page-container">
+      <header className="page-header">
+        <h1 className="page-title">Anime</h1>
+        <p className="page-subtitle">Put the search bar</p>
       </header>
 
-      {loading && <p>Loading anime...</p>}
-      {errorMessage && <p>{errorMessage}</p>}
+      {loading && <p className="status-loading">Loading anime...</p>}
+      {errorMessage && <p className="status-error">{errorMessage}</p>}
 
       {!loading && !errorMessage && (
-        <main className="series-grid">
+        <main className="cards-grid">
           {anime.map((animeItem) => (
             <Popup
               key={animeItem.id}
               modal
               nested
               trigger={
-                <article className="series-card" role="button" tabIndex={0}>
+                <article className="card" role="button" tabIndex={0}>
                   <img
                     src={animeItem.poster}
                     alt={`${animeItem.title} poster`}
-                    className="series-poster"
+                    className="card-img"
                   />
-                  <div className="series-info">
-                    <h3 className="series-title">{animeItem.title}</h3>
-                    <p className="series-meta">
+                  <div className="card-body">
+                    <h3 className="card-title">{animeItem.title}</h3>
+                    <p className="card-meta">
                       <span>Year: {animeItem.year}</span>
                       <span>Rating: {animeItem.rating}</span>
                     </p>
@@ -119,36 +124,36 @@ function AnimePage() {
               }
             >
               {(close) => (
-                <div className="series-popup">
-                  <div className="series-popup-body">
+                <div className="popup-container">
+                  <div className="popup-content">
                     <img
                       src={animeItem.poster}
                       alt={`${animeItem.title} poster`}
-                      className="series-popup-poster"
+                      className="popup-img"
                     />
 
-                    <div className="series-popup-details">
-                      <h2 className="series-popup-title">{animeItem.title}</h2>
+                    <div className="popup-details">
+                      <h2 className="popup-title">{animeItem.title}</h2>
 
-                      <p className="series-popup-stats">
+                      <p className="popup-meta">
                         <span>Year: {animeItem.year}</span>
                         <span>Rating: {animeItem.rating}</span>
                       </p>
 
-                      <p className="series-popup-description">
+                      <p className="popup-description">
                         {animeItem.description || "No description available."}
                       </p>
 
                       {!userId ? (
-                        <p className="series-popup-authmsg">
+                        <p className="popup-message">
                           Please log in to add items to your Watchlist or
                           Favorites.
                         </p>
                       ) : (
-                        <div className="series-popup-actions">
+                        <div className="popup-actions">
                           <button
                             type="button"
-                            className="series-popup-btn"
+                            className="btn btn-primary"
                             onClick={() => addToWatchlist(animeItem)}
                           >
                             Add to Watchlist
@@ -156,7 +161,7 @@ function AnimePage() {
 
                           <button
                             type="button"
-                            className="heart-btn"
+                            className="btn btn-icon"
                             onClick={() => toggleFavorite(animeItem)}
                           >
                             <i
@@ -171,11 +176,8 @@ function AnimePage() {
                       )}
                     </div>
                   </div>
-                  <button
-                    type="button"
-                    className="series-popup-close"
-                    onClick={close}
-                  >
+
+                  <button type="button" className="popup-close" onClick={close}>
                     ✕
                   </button>
                 </div>

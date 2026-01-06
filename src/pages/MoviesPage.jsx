@@ -86,32 +86,32 @@ function MoviesPage() {
   };
 
   return (
-    <section className="moviespage-container">
-      <header className="moviespage-header">
-        <h1>Movies</h1>
-        <p>Put the search bar</p>
+    <section className="page-container">
+      <header className="page-header">
+        <h1 className="page-title">Movies</h1>
+        <p className="page-subtitle">Put the search bar</p>
       </header>
 
-      {loading && <p>Loading movies...</p>}
-      {errorMessage && <p>{errorMessage}</p>}
+      {loading && <p className="status-loading">Loading movies...</p>}
+      {errorMessage && <p className="status-error">{errorMessage}</p>}
 
       {!loading && !errorMessage && (
-        <main className="movies-grid">
+        <main className="cards-grid">
           {movies.map((movie) => (
             <Popup
               key={movie.id}
               modal
               nested
               trigger={
-                <article className="movie-card" role="button" tabIndex={0}>
+                <article className="card" role="button" tabIndex={0}>
                   <img
                     src={movie.poster}
                     alt={`${movie.title} poster`}
-                    className="movie-poster"
+                    className="card-img"
                   />
-                  <div className="movie-info">
-                    <h3 className="movie-title">{movie.title}</h3>
-                    <p className="movie-meta">
+                  <div className="card-body">
+                    <h3 className="card-title">{movie.title}</h3>
+                    <p className="card-meta">
                       <span>Year: {movie.year}</span>
                       <span>Rating: {movie.rating}</span>
                     </p>
@@ -120,36 +120,36 @@ function MoviesPage() {
               }
             >
               {(close) => (
-                <div className="movie-popup">
-                  <div className="movie-popup-body">
+                <div className="popup-container">
+                  <div className="popup-content">
                     <img
                       src={movie.poster}
                       alt={`${movie.title} poster`}
-                      className="movie-popup-poster"
+                      className="popup-img"
                     />
 
-                    <div className="movie-popup-details">
-                      <h2 className="movie-popup-title">{movie.title}</h2>
+                    <div className="popup-details">
+                      <h2 className="popup-title">{movie.title}</h2>
 
-                      <p className="movie-popup-stats">
+                      <p className="popup-meta">
                         <span>Year: {movie.year}</span>
                         <span>Rating: {movie.rating}</span>
                       </p>
 
-                      <p className="movie-popup-description">
+                      <p className="popup-description">
                         {movie.description || "No description available."}
                       </p>
 
                       {!userId ? (
-                        <p className="movie-popup-authmsg">
+                        <p className="popup-message">
                           Please log in to add items to your Watchlist or
                           Favorites.
                         </p>
                       ) : (
-                        <div className="movie-popup-actions">
+                        <div className="popup-actions">
                           <button
                             type="button"
-                            className="movie-popup-btn"
+                            className="btn btn-primary"
                             onClick={() => addToWatchlist(movie)}
                           >
                             Add to Watchlist
@@ -157,7 +157,7 @@ function MoviesPage() {
 
                           <button
                             type="button"
-                            className="heart-btn"
+                            className="btn btn-icon"
                             onClick={() => toggleFavorite(movie)}
                           >
                             <i
@@ -172,11 +172,8 @@ function MoviesPage() {
                       )}
                     </div>
                   </div>
-                  <button
-                    type="button"
-                    className="movie-popup-close"
-                    onClick={close}
-                  >
+
+                  <button type="button" className="popup-close" onClick={close}>
                     ✕
                   </button>
                 </div>
