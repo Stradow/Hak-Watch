@@ -15,13 +15,13 @@ function SeriesPage() {
   const userId = user ? user.id : null;
 
   useEffect(() => {
-    const fetchData = async () => {
+    async function fetchData() {
       try {
         setLoading(true);
         setErrorMessage("");
 
-        const seriesRespond = await axios.get(`${API_URL}/series`);
-        setSeries(seriesRespond.data || []);
+        const seriesRes = await axios.get(`${API_URL}/series`);
+        setSeries(seriesRes.data || []);
 
         if (userId) {
           const favRes = await axios.get(`${API_URL}/favorites`, {
@@ -38,7 +38,8 @@ function SeriesPage() {
       } finally {
         setLoading(false);
       }
-    };
+    }
+
     fetchData();
   }, [userId]);
 
@@ -46,11 +47,15 @@ function SeriesPage() {
     if (!user) return;
 
     try {
-      const existsRes = await axios.get(`${API_URL}/watchlist`, {
-        params: { userId: user.id, seriesId: serie.id },
+      const watchRes = await axios.get(`${API_URL}/watchlist`, {
+        params: { userId: user.id },
       });
 
-      if ((existsRes.data || []).length > 0) return;
+      const alreadyExists = (watchRes.data || []).some(
+        (entry) => entry.seriesId === serie.id
+      );
+
+      if (alreadyExists) return;
 
       await axios.post(`${API_URL}/watchlist`, {
         userId: user.id,
@@ -58,10 +63,7 @@ function SeriesPage() {
         createdAt: new Date().toISOString(),
       });
     } catch (error) {
-      console.log(
-        "ADD TO WATCHLIST (SERIES) ERROR:",
-        error?.response?.data || error
-      );
+      console.log("ADD TO WATCHLIST ERROR:", error);
     }
   };
 
@@ -86,7 +88,9 @@ function SeriesPage() {
         });
         setFavorites((prev) => [...prev, response.data]);
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log("TOGGLE FAVORITE ERROR:", error);
+    }
   };
 
   return (
@@ -189,4 +193,5 @@ function SeriesPage() {
     </section>
   );
 }
+
 export default SeriesPage;
