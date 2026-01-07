@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import Githublogo from "../assets/images/Githublogo.png";
 
 function Footer() {
   return (
@@ -9,7 +10,7 @@ function Footer() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src="/src/assets/images/Githublogo.png" alt="Git-Hub-Logo" />
+          <img src={Githublogo} alt="Git-Hub-Logo" />
         </NavLink>
       </button>
     </div>
