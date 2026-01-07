@@ -142,7 +142,7 @@ function ManageSeriesPage() {
   };
 
   return (
-    <section className="admin-series-container">
+    <section className="admin-movies-container">
       <header className="admin-page-header">
         <h1>Manage Series</h1>
         <p>Create, edit, and delete series from the database.</p>
@@ -215,23 +215,23 @@ function ManageSeriesPage() {
         {loading && <p>Loading series...</p>}
 
         {!loading && (
-          <div className="admin-series-list">
+          <div className="admin-movies-list">
             {series.map((oneSeries) => (
-              <article key={oneSeries.id} className="admin-series-row">
-                <div className="admin-series-preview">
+              <article key={oneSeries.id} className="admin-movie-row">
+                <div className="admin-movie-preview">
                   <p>
                     <strong>{oneSeries.title}</strong>
                   </p>
                   <p>Rating: {oneSeries.rating}</p>
                   <img
-                    className="admin-series-img"
+                    className="admin-movie-img"
                     src={oneSeries.poster}
                     alt={`${oneSeries.title} poster`}
                   />
-                  <p className="admin-series-url">{oneSeries.poster}</p>
+                  <p className="admin-movie-url">{oneSeries.poster}</p>
                 </div>
 
-                <div className="admin-series-actions">
+                <div className="admin-movie-actions">
                   <button type="button" onClick={() => startEdit(oneSeries)}>
                     Edit
                   </button>

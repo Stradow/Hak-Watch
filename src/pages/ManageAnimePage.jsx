@@ -137,7 +137,7 @@ function ManageAnimePage() {
   };
 
   return (
-    <section className="admin-anime-container">
+    <section className="admin-movies-container">
       <header className="admin-page-header">
         <h1>Manage Anime</h1>
         <p>Create, edit, and delete anime from the database.</p>
@@ -211,23 +211,23 @@ function ManageAnimePage() {
         {loading && <p>Loading anime...</p>}
 
         {!loading && (
-          <div className="admin-anime-list">
+          <div className="admin-movies-list">
             {anime.map((oneAnime) => (
-              <article key={oneAnime.id} className="admin-anime-row">
-                <div className="admin-anime-preview">
+              <article key={oneAnime.id} className="admin-movie-row">
+                <div className="admin-movie-preview">
                   <p>
                     <strong>{oneAnime.title}</strong>
                   </p>
                   <p>Rating: {oneAnime.rating}</p>
                   <img
-                    className="admin-anime-img"
+                    className="admin-movie-img"
                     src={oneAnime.poster}
                     alt={`${oneAnime.title} poster`}
                   />
-                  <p className="admin-anime-url">{oneAnime.poster}</p>
+                  <p className="admin-movie-url">{oneAnime.poster}</p>
                 </div>
 
-                <div className="admin-anime-actions">
+                <div className="admin-movie-actions">
                   <button type="button" onClick={() => startEdit(oneAnime)}>
                     Edit
                   </button>
