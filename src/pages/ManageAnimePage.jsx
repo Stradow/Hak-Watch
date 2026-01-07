@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { API_URL } from "../config/apiconfig.js";
+import { API_URL } from "../config/apiConfig.js";
 
 const emptyForm = {
   title: "",

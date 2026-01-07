@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { API_URL } from "../config/apiconfig.js";
+import { API_URL } from "../config/apiConfig.js";
 
 function RegisterPage() {
   const [username, setUsername] = useState("");

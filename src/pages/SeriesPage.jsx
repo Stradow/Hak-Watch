@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Popup from "reactjs-popup";
 import axios from "axios";
-import { API_URL } from "../config/apiconfig.js";
+import { API_URL } from "../config/apiConfig.js";
 
 function SeriesPage() {
   const [series, setSeries] = useState([]);
