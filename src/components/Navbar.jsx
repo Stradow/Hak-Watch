@@ -15,7 +15,7 @@ function Navbar() {
       <Link to={homePath}>
         <img
           alt="HackWatchLogo"
-          src="./src/assets/images/HakLogo.png"
+          src="/src/assets/images/HakLogo.png"
           className="navbar-logo"
         />
         <strong>HAK Watch</strong>

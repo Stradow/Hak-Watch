@@ -9,7 +9,7 @@ function Footer() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src="./src/assets/images/Githublogo.png" alt="Git-Hub-Logo" />
+          <img src="/src/assets/images/Githublogo.png" alt="Git-Hub-Logo" />
         </NavLink>
       </button>
     </div>
