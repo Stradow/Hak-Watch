@@ -88,7 +88,7 @@ function MoviesPage() {
     <section className="page-container">
       <header className="page-header">
         <h1 className="page-title">Movies</h1>
-        <p className="page-subtitle">Put the search bar</p>
+        {/* <p className="page-subtitle">Put the search bar</p> */}
       </header>
 
       {loading && <p className="status-loading">Loading movies...</p>}

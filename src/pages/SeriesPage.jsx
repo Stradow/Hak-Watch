@@ -96,7 +96,7 @@ function SeriesPage() {
     <section className="page-container">
       <header className="page-header">
         <h1 className="page-title">Series</h1>
-        <p className="page-subtitle">Put the search bar</p>
+        {/* <p className="page-subtitle">Put the search bar</p> */}
       </header>
 
       {loading && <p className="status-loading">Loading series...</p>}
