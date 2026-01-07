@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { API_URL } from "../config/apiconfig.js";
+import { API_URL } from "../config/apiConfig.js";
 
 function WatchListPage() {
   const [watchlist, setWatchlist] = useState([]);

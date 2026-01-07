@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { API_URL } from "../config/apiconfig.js";
+import { API_URL } from "../config/apiConfig.js";
 
 function LoginPage() {
   const [username, setUsername] = useState("");
