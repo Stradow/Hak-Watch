@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import HakLogo from "../assets/images/HakLogo.png";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -13,11 +14,7 @@ function Navbar() {
   return (
     <nav className="navbar-container">
       <Link to={homePath}>
-        <img
-          alt="HackWatchLogo"
-          src="/src/assets/images/HakLogo.png"
-          className="navbar-logo"
-        />
+        <img alt="HackWatchLogo" src={HakLogo} className="navbar-logo" />
         <strong>HAK Watch</strong>
       </Link>
 

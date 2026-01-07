@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import HakLogo from "../assets/images/HakLogo.png";
 
 function NotFoundPage() {
   const user = JSON.parse(localStorage.getItem("hakwatch_user") || "null");
@@ -7,11 +8,7 @@ function NotFoundPage() {
 
   return (
     <section className="notfound-container">
-      <img
-        alt="HackWatchLogo"
-        src="./src/assets/images/HakLogo.png"
-        className="notfound-haklogo"
-      />
+      <img alt="HackWatchLogo" src={HakLogo} className="notfound-haklogo" />
 
       <div className="notfound-actions">
         <h1>404</h1>
