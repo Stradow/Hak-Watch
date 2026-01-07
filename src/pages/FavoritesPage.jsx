@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { API_URL } from "../config/apiconfig.js";
 
 function FavoritesPage() {
   const [favourites, setFavourites] = useState([]);
@@ -15,7 +16,7 @@ function FavoritesPage() {
     async function getFavourites() {
       try {
         const favRes = await axios.get(
-          `http://localhost:4000/favorites?userId=${loggedUser.id}`
+          `${API_URL}/favorites?userId=${loggedUser.id}`
         );
 
         const movieIds = favRes.data
@@ -30,9 +31,9 @@ function FavoritesPage() {
           .map((currentItem) => currentItem.animeId)
           .filter((id) => typeof id === "number");
 
-        const moviesRes = await axios.get("http://localhost:4000/movies");
-        const seriesRes = await axios.get("http://localhost:4000/series");
-        const animeRes = await axios.get("http://localhost:4000/anime");
+        const moviesRes = await axios.get(`${API_URL}/movies`);
+        const seriesRes = await axios.get(`${API_URL}/series`);
+        const animeRes = await axios.get(`${API_URL}/anime`);
 
         const favoriteMovies = moviesRes.data.filter((currentMovie) => {
           return movieIds.includes(currentMovie.id);
